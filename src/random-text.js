@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class MyView1 extends PolymerElement {
+class RandomText extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
@@ -23,13 +23,27 @@ class MyView1 extends PolymerElement {
       </style>
 
       <div class="card">
-        <div class="circle">1</div>
-        <h1>View One</h1>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+        <!--div class="circle">1</div-->
+        <h1>A simple random string generator</h1>
+        <p>A simple random string generator, you can use as password. This is a user friendly version, exclude alphabet i l o, only number 0, 1.</p>
+        <p>Maybe accept user input a little later.</p>
+      </div>
+
+      <div class="card">
+        <h2>{{rnd()}} </h2>
       </div>
     `;
   }
+
+  rnd() {
+        var text = "";
+        var possible = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 6; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
 }
 
-window.customElements.define('my-view1', MyView1);
+window.customElements.define('random-text', RandomText);
